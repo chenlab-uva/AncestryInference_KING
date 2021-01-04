@@ -7,6 +7,6 @@ Here we implement a support-vector-machine(SVM)-based method to identify the mos
 
 ```{bash}
 king -b reference,studydata --pca --projection --rplot
-king -b reference,studydata --pca --projection --rplot --png
+king -b reference,studydata --pca --projection --rplot --pngplot
 ```
 
