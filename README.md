@@ -40,3 +40,7 @@ Rscript Ancestry_Inference.R examplepc.txt example_popref.txt example
 Output file <br/>
 PNG file <br/>
 example_InferredAncestry.txt
+
+## Reference
+Manichaikul A, Mychaleckyj JC, Rich SS, Daly K, Sale M, Chen WM (2010) Robust relationship inference in genome-wide association studies. Bioinformatics 26(22):2867-2873
+
