@@ -5,6 +5,9 @@ Here we implement a support-vector-machine(SVM)-based method to identify the mos
 
 ## How to use
 
+
+Download KING from http://people.virginia.edu/~wc9c/KING/Download.htm
+
 ```{bash}
 king -b reference,studydata --pca --projection --rplot
 king -b reference,studydata --pca --projection --rplot --pngplot
