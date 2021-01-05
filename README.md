@@ -21,5 +21,5 @@ king -b reference,studydata --pca --projection --rplot --pngplot
 
 Run R code for ancestry inference with PC file (examplepc.txt) and popref file (example_popref.txt).
 ```{bash}
-Rscript Ancestry_Inference.R examplepc.txt example_popref.txt prefix
+Rscript Ancestry_Inference.R examplepc.txt example_popref.txt example
 ```
