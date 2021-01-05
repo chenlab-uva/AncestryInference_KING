@@ -38,8 +38,16 @@ Rscript Ancestry_Inference.R examplepc.txt example_popref.txt example
 ```
 
 Output file <br/>
-- PNG file <br/>
 - example_InferredAncestry.txt
+```{bash}
+FID	IID	PC1	PC2	Anc_1st	Pr_1st	Anc_2nd	Pr_2nd	Ancestry
+1328	NA06984	-0.011	0.0268	EUR	0.9922	AFR	0.0044	EUR
+1328	NA06989	-0.0104	0.0276	EUR	0.9955	AFR	0.0021	EUR
+1330	NA12335	-0.0109	0.0267	EUR	0.991	AMR	0.0044	EUR
+```
+
+- PNG file <br/>
+<img src="https://github.com/Zhennan-Z/Ancestry_Inference_PCA_Projection/blob/main/output/example_ancestryplot.png" width="427" height="240">
 
 ## Reference
 Manichaikul A, Mychaleckyj JC, Rich SS, Daly K, Sale M, Chen WM (2010) Robust relationship inference in genome-wide association studies. Bioinformatics 26(22):2867-2873
