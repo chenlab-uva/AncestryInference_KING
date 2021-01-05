@@ -5,8 +5,7 @@ Here we implement a support-vector-machine(SVM)-based method to identify the mos
 
 
 # File format
-PC file: FID IID PC1 PC2 ... PC10
-
+PC file: FID IID PC1 PC2 ... PC10\n
 Popref file: FID IID Population
 
 # Quickstart
