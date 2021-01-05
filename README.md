@@ -37,8 +37,8 @@ Run R code for ancestry inference with PC file (examplepc.txt) and popref file (
 Rscript Ancestry_Inference.R examplepc.txt example_popref.txt example
 ```
 
-Output file <br/>
-- example_InferredAncestry.txt
+## Output file 
+example_InferredAncestry.txt
 ```{bash}
 FID	IID	PC1	PC2	Anc_1st	Pr_1st	Anc_2nd	Pr_2nd	Ancestry
 1328	NA06984	-0.011	0.0268	EUR	0.9922	AFR	0.0044	EUR
@@ -46,7 +46,7 @@ FID	IID	PC1	PC2	Anc_1st	Pr_1st	Anc_2nd	Pr_2nd	Ancestry
 1330	NA12335	-0.0109	0.0267	EUR	0.991	AMR	0.0044	EUR
 ```
 
-- PNG file <br/>
+PNG file <br/>
 <img src="https://github.com/Zhennan-Z/Ancestry_Inference_PCA_Projection/blob/main/output/example_ancestryplot.png" width="427" height="240">
 
 ## Reference
