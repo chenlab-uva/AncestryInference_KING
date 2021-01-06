@@ -16,7 +16,7 @@ dat$fold[!is.na(dat$Population)] <- sample(1:5, sum(!is.na(dat$Population)), rep
 numpc <- length(grep("PC", colnames(pc)))
 numpc <- ifelse(numpc >= 10, 10, numpc)
 svm.mod <- as.formula(paste0("Population~", paste0("PC", 1:numpc, collapse = "+")))
-best.set = c(-2, 0)
+best.set <- c(-2, 0)
 step_mat <- cbind(c(3,3), c(2,2), c(1,1))
 para_one <- function(x) {
   fold.index <- para[x, "fold"]
@@ -113,7 +113,7 @@ x.high <- max(train.phe$PC1, pred.out$PC1) + x.adjust
 y.adjust <- (max(train.phe$PC2, pred.out$PC2) - min(train.phe$PC2, pred.out$PC2))/10
 y.low <- min(train.phe$PC2, pred.out$PC2) - y.adjust
 y.high <- max(train.phe$PC2, pred.out$PC2) + y.adjust
-postscript(paste0(prefix, "_ancestryplot.ps"), paper = "letter", horizontal = T)
+png(paste0(prefix, "_ancestryplot.png"), width=854, height=480)
 ncols <- min(3, ceiling(length(unique(pred.out$Ancestry))/2))
 if ("Missing" %in% unique(pred.out$Ancestry)) {
   legend.group <- c(sort(unique(pred.out$Ancestry)[unique(pred.out$Ancestry) != "Missing"]), "Missing")
