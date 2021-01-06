@@ -43,7 +43,7 @@ Run R code for ancestry inference. Three arguments are PC file(examplepc.txt), p
 Rscript Ancestry_Inference.R examplepc.txt example_popref.txt example
 ```
 
-Run ancestry inference in KING
+Also, we can run ancestry inference in KING from binary file with one command line.
 ```{bash}
 king -b reference,studydata --pca --projection --pngplot
 ```
