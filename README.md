@@ -35,12 +35,17 @@ Download KING from http://people.virginia.edu/~wc9c/KING/Download.htm
 Get PCs from KING PCA projection 
 
 ```{bash}
-king -b reference,studydata --pca --projection --popref example_popref.txt --pngplot
+king -b reference,studydata --pca --projection --prefix example
 ```
 
 Run R code for ancestry inference. Three arguments are PC file(examplepc.txt), popref file(example_popref.txt) and prefix(example)
 ```{bash}
 Rscript Ancestry_Inference.R examplepc.txt example_popref.txt example
+```
+
+Run ancestry inference in KING
+```{bash}
+king -b reference,studydata --pca --projection --pngplot
 ```
 
 ## Output file 
