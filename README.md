@@ -14,9 +14,9 @@ PC file: a text file with header line. It requires the following columns: FID, I
 Example PCs file from KING. FA, MO and SEX columns are not required for the analysis.
 ```{bash}
 FID IID FA MO SEX AFF PC1 PC2 PC3 PC4 PC5 PC6 PC7 PC8 PC9 PC10
-HG00096 HG00096 0 0 0 1 -0.0095 0.0280 0.0102 -0.0195 0.0022 0.0037 0.0018 0.0082 0.0023 0.0629
-HG00097 HG00097 0 0 0 1 -0.0094 0.0280 0.0089 -0.0193 0.0027 0.0096 -0.0011 0.0038 0.0021 0.0182
-HG00099 HG00099 0 0 0 1 -0.0097 0.0283 0.0098 -0.0175 0.0037 0.0116 -0.0024 0.0097 -0.0145 0.0608
+HG00096 HG00096 0 0 0 1 0.0110 -0.0271 0.0098 0.0198 -0.0017 -0.0097 -0.0003 0.0010 0.0031 -0.0152
+HG00097 HG00097 0 0 0 1 0.0107 -0.0275 0.0090 0.0189 -0.0008 -0.0097 -0.0012 -0.0014 -0.0024 -0.0245
+HG00099 HG00099 0 0 0 1 0.0111 -0.0276 0.0102 0.0183 -0.0025 -0.0151 0.0014 0.0079 -0.0090 -0.0121
 ```
 
 Popref file: a text file with header line. It would contain three columns. They are FID, IID and Population. Users need to creat this file before the analysis.
