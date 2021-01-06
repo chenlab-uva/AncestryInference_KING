@@ -38,7 +38,8 @@ Get PCs from KING PCA projection
 king -b reference,studydata --pca --projection --prefix example
 ```
 
-Run R code for ancestry inference. Three arguments are PC file(examplepc.txt), popref file(example_popref.txt) and prefix(example)
+Run R code for ancestry inference. Three arguments are required. They are PC file(examplepc.txt), popref file(example_popref.txt) and prefix(example).
+Package 'e1071' is required. Package 'qqplot' and package 'doParallel' are optional.
 ```{bash}
 Rscript Ancestry_Inference.R examplepc.txt example_popref.txt example
 ```
