@@ -5,7 +5,13 @@ Here we implement a support-vector-machine(SVM)-based method to identify the mos
 
 
 ## File format
-PC file: a text file with header line. It would contain the following columns: FID, IID, PC1, PC2, PC3,...,PC10. <br/>
+PC file: a text file with header line. It requires the following columns: FID, IID, AFF, PC1, PC2, PC3,...,PC10. <br/>
+- FID: Family ID <br/> 
+- IID: Within-family ID <br/>
+- AFF code ('1' = Reference Sample, '2' = Studay Sample) <br/>
+- PC: PCs inforamtion. Study samples will be projected to the reference PC space. <br/>
+
+Example PCs file from KING. FA, MO and SEX columns are not required for the analysis.
 ```{bash}
 FID IID FA MO SEX AFF PC1 PC2 PC3 PC4 PC5 PC6 PC7 PC8 PC9 PC10
 HG00096 HG00096 0 0 0 1 -0.0095 0.0280 0.0102 -0.0195 0.0022 0.0037 0.0018 0.0082 0.0023 0.0629
@@ -13,7 +19,7 @@ HG00097 HG00097 0 0 0 1 -0.0094 0.0280 0.0089 -0.0193 0.0027 0.0096 -0.0011 0.00
 HG00099 HG00099 0 0 0 1 -0.0097 0.0283 0.0098 -0.0175 0.0037 0.0116 -0.0024 0.0097 -0.0145 0.0608
 ```
 
-Popref file: a text file with header line. It would contain three columns. They are FID, IID and Population.
+Popref file: a text file with header line. It would contain three columns. They are FID, IID and Population. Users need to creat this file before the analysis.
 ```{bash}
 FID IID Population
 HG00096 HG00096 EUR
@@ -27,12 +33,12 @@ Download KING from http://people.virginia.edu/~wc9c/KING/Download.htm
 
 
 Get PCs from KING PCA projection 
+
 ```{bash}
-king -b reference,studydata --pca --projection --popref example_popref.txt --rplot
-king -b reference,studydata --pca --projection --rplot --pngplot
+king -b reference,studydata --pca --projection --popref example_popref.txt --pngplot
 ```
 
-Run R code for ancestry inference with PC file (examplepc.txt) and popref file (example_popref.txt).
+Run R code for ancestry inference. Three arguments are PC file(examplepc.txt), popref file(example_popref.txt) and prefix(example)
 ```{bash}
 Rscript Ancestry_Inference.R examplepc.txt example_popref.txt example
 ```
