@@ -32,14 +32,14 @@ HG00099 HG00099 EUR
 Download KING from http://people.virginia.edu/~wc9c/KING/Download.htm
 
 
-Get PCs from KING PCA projection 
+Get PCs from KING PCA projection. 
 
 ```{bash}
 king -b reference,studydata --pca --projection --prefix example
 ```
 
 Run R code for ancestry inference. Three arguments are required. They are PC file(examplepc.txt), popref file(example_popref.txt) and prefix(example).
-Package 'e1071' is required. Package 'qqplot' and package 'doParallel' are optional.
+Package 'e1071' is required. Package 'ggplot2' and package 'doParallel' are optional.
 ```{bash}
 Rscript Ancestry_Inference.R examplepc.txt example_popref.txt example
 ```
