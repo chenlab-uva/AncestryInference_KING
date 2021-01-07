@@ -62,7 +62,7 @@ PNG file <br/>
 <img src="https://github.com/chenlab-uva/Ancestry_Inference_KING_2021/blob/main/output/example_ancestryplot.png" width="427" height="240">
 
 
-## Rshiny for fun
+## Interactive plots for ancestry inference results.
 Interactive plots. Example R code (Rshiny_Example.R) is saved at Rshiny folder. <br/> 
 <img src="https://github.com/chenlab-uva/Ancestry_Inference_KING_2021/blob/main/Rshiny/Rshiny_Example.png" width="427" height="240">
 
