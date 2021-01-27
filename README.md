@@ -59,7 +59,7 @@ FID	IID	PC1	PC2	Anc_1st	Pr_1st	Anc_2nd	Pr_2nd	Ancestry
 ```
 
 PNG file <br/>
-<img src="https://github.com/chenlab-uva/Ancestry_Inference_KING_2021/blob/main/output/example_ancestryplot.png" width="427" height="240">
+<img src="https://github.com/chenlab-uva/AncestryInference_KING/blob/main/output/example_ancestryplot.png" width="427" height="240">
 
 
 ## Interactive plots for ancestry inference results.
@@ -68,7 +68,7 @@ Run the following R code in R or Rstudio to get interactive plots. Related R fil
 runGitHub("AncestryInference_KING", "chenlab-uva", ref = "main", subdir = "Rshiny")
 ```
 
-<img src="https://github.com/chenlab-uva/Ancestry_Inference_KING_2021/blob/main/Rshiny/Rshiny_Example.png" width="427" height="240">
+<img src="https://github.com/chenlab-uva/AncestryInference_KING/blob/main/Rshiny/ScreenShot.png" width="427" height="240">
 
 
 ## Reference
