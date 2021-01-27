@@ -65,6 +65,7 @@ PNG file <br/>
 ## Interactive plots for ancestry inference results.
 Run the following R code in R or Rstudio to get interactive plots. Related R files are saved at Rshiny folder. <br/> 
 ```{bash}
+library(shiny)
 runGitHub("AncestryInference_KING", "chenlab-uva", ref = "main", subdir = "Rshiny")
 ```
 
