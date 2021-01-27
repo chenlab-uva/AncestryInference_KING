@@ -1,11 +1,11 @@
 # ui.R
 ui <- fluidPage( 
-  titlePanel(h4("Interface for Interactive Plot of Ancestry")),
+  titlePanel(("Interface for Interactive Plot of Ancestry")),
   sidebarLayout(position = "left",
                 sidebarPanel( 
                   fileInput("file1", "Choose a text file with ancestry information",accept = "text"),
                   selectInput(inputId = "Ancestry", label = "Ancestry", choices=c(" ")),
-                  width = 2
+                  width = 3
                 ),
                 mainPanel(
                   fluidRow(
