@@ -68,7 +68,7 @@ Run the following R code in R or Rstudio to get interactive plots. Related R fil
 runGitHub("AncestryInference_KING", "chenlab-uva", ref = "main", subdir = "Rshiny")
 ```
 
-<img src="https://github.com/chenlab-uva/AncestryInference_KING/blob/main/Rshiny/ScreenShot.png" width="427" height="240">
+<img src="https://github.com/chenlab-uva/AncestryInference_KING/blob/main/Rshiny/RshinyExample.png" width="427" height="240">
 
 
 ## Reference
