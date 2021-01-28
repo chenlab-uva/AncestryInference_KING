@@ -70,7 +70,7 @@ library(shiny)
 runGitHub("AncestryInference_KING", "chenlab-uva", ref = "main", subdir = "Rshiny")
 ```
 
-<img src="https://github.com/chenlab-uva/AncestryInference_KING/blob/main/Rshiny/RshinyExample.png" width="427" height="240">
+<img src="https://github.com/chenlab-uva/AncestryInference_KING/blob/main/Rshiny/Example.png" width="427" height="240">
 
 
 ## Reference
