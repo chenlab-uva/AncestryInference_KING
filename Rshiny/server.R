@@ -66,11 +66,7 @@ server <- function(input, output, session) {
     if (n <= 13) {
       Palette <- predefined.col[1:n]
     } else {
-      Palette <- 
-      
-      
-      
-      _hue(n)
+      Palette <- ggcolor_hue(n)
     }
     if ("Missing" %in% uniq.grp) {
       cols = c(Palette[1:(n - 1)], "#999999")
@@ -104,4 +100,3 @@ server <- function(input, output, session) {
   })
   
 }
-
