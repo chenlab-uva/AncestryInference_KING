@@ -80,7 +80,6 @@ Please upload a text file with ancestry information. Three columns are required.
 library(shiny)
 runGitHub("AncestryInference_KING", "chenlab-uva", ref = "main", subdir = "Rshiny")
 ```
-
 <img src="https://github.com/chenlab-uva/AncestryInference_KING/blob/main/Rshiny/Example.png" width="427" height="240">
 
 
