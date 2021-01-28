@@ -49,6 +49,17 @@ Also, we can run ancestry inference in KING from binary file with one command li
 king -b reference,studydata --pca --projection --pngplot
 ```
 
+## European only inference 
+Keep European samples only.
+Get PCs from KING PCA projection.
+```{bash}
+king -b EurRef,EurStudy --pca --projection --popref EurRef_popref.txt --prefix EurStudy
+```
+Run R code the get the ancestry inference results.
+```{bash}
+Rscript Ancestry_Inference.R EurStudypc.txt EurRef_popref.txt prefixname
+```
+
 ## Output file 
 example_InferredAncestry.txt
 ```{bash}
