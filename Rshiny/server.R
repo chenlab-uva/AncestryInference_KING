@@ -36,6 +36,11 @@ server <- function(input, output, session) {
       legend.group <- sort(uniq.grp)
     }
     n = length(uniq.grp)
+    if (n <= 13) {
+      Palette <- predefined.col[1:n]
+    } else {
+      Palette <- ggcolor_hue[n]
+    }
     if ("Missing" %in% uniq.grp) {
       cols = c(Palette[1:(n - 1)], "#999999")
     } else {
@@ -59,6 +64,11 @@ server <- function(input, output, session) {
       legend.group <- sort(uniq.grp)
     }
     n = length(uniq.grp)
+    if (n <= 13) {
+      Palette <- predefined.col[1:n]
+    } else {
+      Palette <- ggcolor_hue[n]
+    }
     if ("Missing" %in% uniq.grp) {
       cols = c(Palette[1:(n - 1)], "#999999")
     } else {
@@ -75,10 +85,11 @@ server <- function(input, output, session) {
       subdf <- subset.df()
       range.PC1 <- max(subdf$PC1) - min(subdf$PC1)
       range.PC2 <- max(subdf$PC2) - min(subdf$PC2)
-      print(paste0("PC1 = ", round(input$plot_click$x, 4), ";PC2 = ", round(input$plot_click$y, 4)))
+      cat(paste0("PC1 = ", round(input$plot_click$x, 4), "; PC2 = ", round(input$plot_click$y, 4)))
+      cat("\n")
       sample.click <- subdf[which.min((subdf$PC1 - input$plot_click$x)^2 + (subdf$PC2 - input$plot_click$y)^2), ]
       if (abs(sample.click$PC1 - input$plot_click$x) <= range.PC1/100 & abs(sample.click$PC2 - input$plot_click$y) <= range.PC2/100) {
-        print(sample.click)
+        write.table(sample.click, row.names = FALSE, quote = FALSE, sep = "\t")
       } else {
         print("No sample with this PC information. Please click one dot")
       }
