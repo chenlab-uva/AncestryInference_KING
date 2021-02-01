@@ -32,10 +32,10 @@ HG00099 HG00099 EUR
 Download KING from http://people.virginia.edu/~wc9c/KING/Download.htm
 
 
-Get PCs from KING PCA projection. 
+Get PCs from KING PCA projection. The affection status (6th column) in study fam file need to be 2. The referecen's affection status is 1 or missing. Nothing is required if the reference is KGRef or EurRef.
 
 ```{bash}
-king -b reference,studydata --pca --projection --popfile example_popref.txt --prefix example
+king -b reference,studydata --pca --projection --prefix example
 ```
 
 Run R code for ancestry inference. Three arguments are required. They are PC file(examplepc.txt), popref file(example_popref.txt) and prefix(example).
@@ -53,7 +53,7 @@ king -b reference,studydata --pca --projection --pngplot
 Keep European samples only.
 Get PCs from KING PCA projection.
 ```{bash}
-king -b EurRef,EurStudy --pca --projection --popref EurRef_popref.txt --prefix EurStudy
+king -b EurRef,EurStudy --pca --projection --prefix EurStudy
 ```
 Run R code the get the ancestry inference results. Three arguments are required. They are pc file, popref file and prefixname. Please keep the order.
 ```{bash}
