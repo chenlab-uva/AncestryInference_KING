@@ -3,6 +3,7 @@ server <- function(input, output, session) {
     file1 <- input$file1
     if (is.null(file1)) return()
     ex_df <- read.table(file = file1$datapath, header = TRUE, stringsAsFactors = FALSE)
+    ex_df$Ancestry[is.na(ex_df$Ancestry)] <- "Missing"
     ex_df$Ancestry[grep(";", ex_df$Ancestry)] <- "Missing"
     updateSelectInput(session, "Ancestry", choices = unique(ex_df$Ancestry))
     return(ex_df)
