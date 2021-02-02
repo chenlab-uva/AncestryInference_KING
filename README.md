@@ -70,7 +70,7 @@ FID	IID	PC1	PC2	Anc_1st	Pr_1st	Anc_2nd	Pr_2nd	Ancestry
 ```
 
 PNG file <br/>
-<img src="https://github.com/chenlab-uva/AncestryInference_KING/blob/main/output/example_ancestryplot.png" width="427" height="240">
+<img src="https://github.com/chenlab-uva/AncestryInference_KING/blob/main/output/example_ancestryplot.png" width="854" height="480">
 
 
 ## Interactive plots for ancestry inference results.
