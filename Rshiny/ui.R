@@ -4,7 +4,8 @@ ui <- fluidPage(
   sidebarLayout(position = "left",
                 sidebarPanel( 
                   fileInput("file1", "Choose a text file with ancestry information",accept = "text"),
-                  selectInput(inputId = "Ancestry", label = "Ancestry", choices=c(" ")),
+                  selectInput("Ancestry", label = "Ancestry", choices = c(Choose=''), selected = NULL),
+                  selectizeInput("FID_IID",label = "FID_IID", choices = c(Choose=''), selected = NULL),
                   width = 3
                 ),
                 mainPanel(
@@ -14,6 +15,8 @@ ui <- fluidPage(
                   fluidRow(
                     column(width = 12,
                            verbatimTextOutput("click_info"),
-                           verbatimTextOutput("last_infor"))))
+                           verbatimTextOutput("last_infor"),
+                           dataTableOutput('table'))))
+                
   )
 )
