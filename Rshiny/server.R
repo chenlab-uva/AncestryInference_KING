@@ -1,11 +1,14 @@
 server <- function(input, output, session) {
+  
   data <- reactive({
     file1 <- input$file1
     if (is.null(file1)) return()
     ex_df <- read.table(file = file1$datapath, header = TRUE, stringsAsFactors = FALSE)
     ex_df$Ancestry[is.na(ex_df$Ancestry)] <- "Missing"
     ex_df$Ancestry[grep(";", ex_df$Ancestry)] <- "Missing"
-    updateSelectInput(session, "Ancestry", choices = unique(ex_df$Ancestry))
+    iids <- paste(ex_df$FID, ex_df$IID, sep = "_")
+    updateSelectInput(session, "Ancestry", label = "Ancestry", choices = c(Choose='', unique(ex_df$Ancestry)), selected = NULL)
+    updateSelectizeInput(session, "FID_IID", label = "FID_IID", choices = c(Choose='', iids), selected = NULL)
     return(ex_df)
   })
   
@@ -55,7 +58,7 @@ server <- function(input, output, session) {
   
   # PLOT 2
   output$plot2 <- renderPlot({
-    if (is.null(subset.df())) return(NULL)
+    req(input$Ancestry)
     full.df <- data()
     uniq.grp <- unique(full.df$Ancestry)
     if ("Missing" %in% uniq.grp) {
@@ -80,6 +83,7 @@ server <- function(input, output, session) {
       ggtitle(paste0("Interactive Plot for Samples of ", input$Ancestry, " Ancestry (N=", sub.group.num, ")")) + 
       theme(text = element_text(size = 16))
   })
+  
   output$click_info <- renderPrint({
     if (!is.null(input$plot_click)) {
       subdf <- subset.df()
@@ -96,6 +100,14 @@ server <- function(input, output, session) {
     }
   })
   
+  output$table <- renderDataTable({ 
+    req(input$FID_IID)
+    all_df <- data()
+    fid <- unlist(strsplit(input$FID_IID, "_"))[1]
+    iid <- unlist(strsplit(input$FID_IID, "_"))[2]
+    all_df[all_df$FID==fid & all_df$IID==iid, ]
+    }, rownames = FALSE, options = list(dom = 't'))
+
   session$onSessionEnded(function() {
     stopApp()
   })
