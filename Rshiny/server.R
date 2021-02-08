@@ -106,7 +106,7 @@ server <- function(input, output, session) {
     fid <- unlist(strsplit(input$FID_IID, "_"))[1]
     iid <- unlist(strsplit(input$FID_IID, "_"))[2]
     all_df[all_df$FID==fid & all_df$IID==iid, ]
-    }, rownames = FALSE, options = list(dom = 't'))
+    },options = list(dom = 't'))
 
   session$onSessionEnded(function() {
     stopApp()
