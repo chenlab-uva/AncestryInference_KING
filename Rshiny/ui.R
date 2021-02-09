@@ -5,7 +5,20 @@ ui <- fluidPage(
                 sidebarPanel( 
                   fileInput("file1", "Choose a text file with ancestry information",accept = "text"),
                   selectInput("Ancestry", label = "Ancestry", choices = c(Choose=''), selected = NULL),
-                  selectizeInput("FID_IID",label = "FID_IID", choices = c(Choose=''), selected = NULL),
+                  #textInput("FID_IID", "FID_IID", value = ""),
+                  fluidRow(
+                    column(5, textInput(inputId = "SampleFID",
+                                        label = "FID",
+                                        value = " ",
+                                        width = "100px")
+                    ),
+                    column(5, ofset = 3,
+                           textInput(inputId = "SampleIID",
+                                     label = "IID",
+                                     value = "",
+                                     width = "100px")
+                    )),
+                  actionButton(inputId = "EnterID", label = "Enter Sample FID and IID"),
                   width = 3
                 ),
                 mainPanel(
