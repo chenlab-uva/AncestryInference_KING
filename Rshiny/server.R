@@ -8,7 +8,6 @@ server <- function(input, output, session) {
     ex_df$Ancestry[grep(";", ex_df$Ancestry)] <- "Missing"
     iids <- paste(ex_df$FID, ex_df$IID, sep = "_")
     updateSelectInput(session, "Ancestry", label = "Ancestry", choices = c(Choose='', unique(ex_df$Ancestry)), selected = NULL)
-    updateSelectizeInput(session, "FID_IID", label = "FID_IID", choices = c(Choose='', iids), selected = NULL)
     return(ex_df)
   })
   
@@ -100,14 +99,20 @@ server <- function(input, output, session) {
     }
   })
   
-  output$table <- renderDataTable({ 
-    req(input$FID_IID)
+  one.sample <- eventReactive(input$EnterID, {
+    req(input$file1)
     all_df <- data()
-    fid <- unlist(strsplit(input$FID_IID, "_"))[1]
-    iid <- unlist(strsplit(input$FID_IID, "_"))[2]
-    all_df[all_df$FID==fid & all_df$IID==iid, ]
-    },options = list(dom = 't'))
-
+    all_df[all_df$FID==input$SampleFID & all_df$IID==input$SampleIID, ]
+  })
+  
+  output$table <- renderDataTable({ 
+  select.df <- one.sample()
+    validate(
+      need(nrow(select.df) > 0, "Please select a related pair")
+    )
+    select.df
+  },options = list(dom = 't'))
+  
   session$onSessionEnded(function() {
     stopApp()
   })
