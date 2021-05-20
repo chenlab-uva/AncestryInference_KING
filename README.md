@@ -29,7 +29,7 @@ HG00099 HG00099 EUR
 
 ## Quickstart
 
-Download KING from http://people.virginia.edu/~wc9c/KING/Download.htm
+Download KING from https://www.kingrelatedness.com/Download.shtml
 
 
 Get PCs from KING PCA projection. The affection status (6th column) in study fam file need to be 2. The referecen's affection status is 1 or missing. Nothing is required if the reference is KGRef or EurRef.
