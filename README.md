@@ -3,6 +3,19 @@
 This repository is for ancestry inference.
 Here we implement a support-vector-machine(SVM)-based method to identify the most likely ancestral group(s) for an individual by leveraging known ancestry in a reference dataset (e.g., the 1000 Genomes Project data).
 
+## Referece
+We prepared three reference datasets. <br/>
+- KGRef: cleaned 1000 genome with five super population groups (AFR,EUR, EAS, SAS and AMR). <br/>
+- KGeurref: cleaned EUR samples from 1000 genome. They are NEUR, SEUR and FIN. <br/>
+- HGDP_AsianRef: cleaned asian samples from HGDP. They are Central_South_Asia, Est_Asia and Middle_Est. <br/>
+
+Related files are saved at https://www.dropbox.com/sh/fanfst7lyc1kn9u/AAAPyJhwiYdHc8H-31I-xbZua?dl=0 <br/>
+Please use unxz to unzip xzipped files.
+For example  <br/>
+```{bash}
+unxz KGeurref.bed.xz
+```
+
 
 ## File format
 PC file: a text file with header line. It requires the following columns: FID, IID, AFF, PC1, PC2, PC3,...,PC10. <br/>
@@ -32,10 +45,10 @@ HG00099 HG00099 EUR
 Download KING from https://www.kingrelatedness.com/Download.shtml
 
 
-Get PCs from KING PCA projection. The affection status (6th column) in study fam file need to be 2. The referecen's affection status is 1 or missing. Nothing is required if the reference is KGRef or EurRef.
+Get PCs from KING PCA projection. The affection status (6th column) in study fam file need to be 2. The referecen's affection status is 1 or missing. Nothing is required if the reference is KGref.
 
 ```{bash}
-king -b reference,studydata --pca --projection --prefix example
+king -b KGref,studydata --pca --projection --prefix example
 ```
 
 Run R code for ancestry inference. Three arguments are required. They are PC file(examplepc.txt), popref file(example_popref.txt) and prefix(example).
@@ -46,18 +59,18 @@ Rscript Ancestry_Inference.R examplepc.txt example_popref.txt example
 
 Also, we can run ancestry inference in KING from binary file with one command line.
 ```{bash}
-king -b reference,studydata --pca --projection --pngplot
+king -b KGref,studydata --pca --projection --pngplot
 ```
 
 ## European only inference 
 Keep European samples only.
 Get PCs from KING PCA projection.
 ```{bash}
-king -b EurRef,EurStudy --pca --projection --prefix EurStudy
+king -b KGeurref,EurStudy --pca --projection --prefix EurStudy
 ```
 Run R code the get the ancestry inference results. Three arguments are required. They are pc file, popref file and prefixname. Please keep the order.
 ```{bash}
-Rscript Ancestry_Inference.R EurStudypc.txt EurRef_popref.txt prefixname
+Rscript Ancestry_Inference.R EurStudypc.txt KGeurref_popref.txt prefixname
 ```
 
 ## Output file 
