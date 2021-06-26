@@ -1,33 +1,32 @@
 server <- function(input, output, session) {
   
   data <- reactive({
+    req(input$file1)
     file1 <- input$file1
-    if (is.null(file1)) return()
     ex_df <- read.table(file = file1$datapath, header = TRUE, stringsAsFactors = FALSE)
     ex_df$Ancestry[is.na(ex_df$Ancestry)] <- "Missing"
     ex_df$Ancestry[grep(";", ex_df$Ancestry)] <- "Missing"
-    iids <- paste(ex_df$FID, ex_df$IID, sep = "_")
-    updateSelectInput(session, "Ancestry", label = "Ancestry", choices = c(Choose='', unique(ex_df$Ancestry)), selected = NULL)
+    updateSelectInput(session, "Ancestry", label = "Step 2: Choose the ancestry group", choices = c(Choose='', unique(ex_df$Ancestry)), selected = NULL)
     return(ex_df)
   })
   
   filename <- reactive({
+    req(input$file1)
     file.info <- input$file1
-    if (is.null(file.info)) return(NULL)
     filename.tmp <- gsub(".*/", "", file.info$name)
     file_prefix <- gsub("_.*", "", filename.tmp)
     return(file_prefix)
   })
   
   subset.df <- reactive({
-    if (is.null(data())) return(NULL)
+    req(data())
     ex_df2 <- data()
     sub_ex_df <- ex_df2[ex_df2$Ancestry == input$Ancestry, ]
     return(sub_ex_df)
   })
   
   output$plot1 <- renderPlot({
-    if (is.null(data())) return(NULL)
+    req(data())
     ex_df <- data()
     uniq.grp <- unique(ex_df$Ancestry)
     studyname <- filename()
@@ -51,7 +50,7 @@ server <- function(input, output, session) {
     ggplot(ex_df, aes(PC1, PC2, color = Ancestry)) + geom_point(aes(colour = factor(Ancestry, levels = legend.group))) + 
       scale_colour_manual(values = cols) + 
       ggtitle(paste0("PC Coordinates and Inferred Ancestry for Samples in ", studyname," (N=", sample.size, ")")) + 
-      theme(text=element_text(size=16))
+      theme(text=element_text(size=12))
   })
   
   
@@ -80,38 +79,40 @@ server <- function(input, output, session) {
     subset.df.2 <- subset.df()
     ggplot(subset.df.2, aes(PC1, PC2)) + geom_point(color = cols[legend.group %in% input$Ancestry]) + 
       ggtitle(paste0("Interactive Plot for Samples of ", input$Ancestry, " Ancestry (N=", sub.group.num, ")")) + 
-      theme(text = element_text(size = 16))
+      theme(text = element_text(size = 12))
   })
   
   output$click_info <- renderPrint({
-    if (!is.null(input$plot_click)) {
-      subdf <- subset.df()
-      range.PC1 <- max(subdf$PC1) - min(subdf$PC1)
-      range.PC2 <- max(subdf$PC2) - min(subdf$PC2)
-      cat(paste0("PC1 = ", round(input$plot_click$x, 4), "; PC2 = ", round(input$plot_click$y, 4)))
-      cat("\n")
-      sample.click <- subdf[which.min((subdf$PC1 - input$plot_click$x)^2 + (subdf$PC2 - input$plot_click$y)^2), ]
-      if (abs(sample.click$PC1 - input$plot_click$x) <= range.PC1/100 & abs(sample.click$PC2 - input$plot_click$y) <= range.PC2/100) {
-        write.table(sample.click, row.names = FALSE, quote = FALSE, sep = "\t")
-      } else {
-        print("No sample with this PC information. Please click one dot")
-      }
+    req(input$plot_click)
+    req(subset.df())
+    subdf <- subset.df()
+    range.PC1 <- max(subdf$PC1) - min(subdf$PC1)
+    range.PC2 <- max(subdf$PC2) - min(subdf$PC2)
+    #cat(paste0("PC1 = ", round(input$plot_click$x, 4), "; PC2 = ", round(input$plot_click$y, 4)))
+    #cat("\n")
+    sample.click <- subdf[which.min((subdf$PC1 - input$plot_click$x)^2 + (subdf$PC2 - input$plot_click$y)^2), ]
+    
+    
+    if (abs(sample.click$PC1 - input$plot_click$x) >= range.PC1/100 | abs(sample.click$PC2 - input$plot_click$y) >= range.PC2/100) {
+      sample.click <- NULL 
+      print("No sample with this PC information. Please click one dot")
     }
+    output$table1 <- renderDataTable({
+      sample.click
+    })
   })
   
-  one.sample <- eventReactive(input$EnterID, {
-    req(input$file1)
-    all_df <- data()
-    all_df[all_df$FID==input$SampleFID & all_df$IID==input$SampleIID, ]
-  })
-  
-  output$table <- renderDataTable({ 
-  select.df <- one.sample()
+  output$table2 <- renderDataTable({
+    req(input$EnterFID)
+    req(input$FID)
+    req(data())
+    select.df <- data()
+    select.df <- select.df[select.df$FID == input$FID, ]
     validate(
-      need(nrow(select.df) > 0, "Please select a related pair")
+      need(nrow(select.df) > 0, "Please choose a valid Family ID")
     )
     select.df
-  },options = list(dom = 't'))
+  })
   
   session$onSessionEnded(function() {
     stopApp()
