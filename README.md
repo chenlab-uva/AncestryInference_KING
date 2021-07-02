@@ -10,7 +10,8 @@ We prepared three reference datasets. <br/>
 - HGDP_AsianRef: cleaned asian samples from HGDP. They are Central_South_Asia, Est_Asia and Middle_Est. <br/>
 
 Related files are saved at https://www.dropbox.com/sh/fanfst7lyc1kn9u/AAAPyJhwiYdHc8H-31I-xbZua?dl=0 <br/>
-Please use unxz to unzip xzipped files.
+After clicking the DropBox link, please click the Download button at the top right corner to download files. <br/>
+Then use unxz to unzip xzipped files.
 For example  <br/>
 ```{bash}
 unxz KGeurref.bed.xz
