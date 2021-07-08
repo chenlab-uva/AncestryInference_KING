@@ -11,6 +11,10 @@ We prepared three reference datasets. <br/>
 
 Related files are saved at https://www.dropbox.com/sh/fanfst7lyc1kn9u/AAAPyJhwiYdHc8H-31I-xbZua?dl=0 <br/>
 After clicking the DropBox link, please click the Download button at the top right corner to download files. <br/>
+Use unzip to unzip Reference.zip file.
+```{bash}
+unzip Refernece.zip
+```
 Then use unxz to unzip xzipped files.
 For example  <br/>
 ```{bash}
@@ -95,9 +99,8 @@ Please upload a text file with ancestry information. Three columns are required.
 library(shiny)
 runGitHub("AncestryInference_KING", "chenlab-uva", ref = "main", subdir = "Rshiny")
 ```
-<img src="https://github.com/chenlab-uva/AncestryInference_KING/blob/main/output/viewAncestry_1.png" width="854" height="480">
-<img src="https://github.com/chenlab-uva/AncestryInference_KING/blob/main/output/viewAncestry_2.png" width="854" height="480">
-<img src="https://github.com/chenlab-uva/AncestryInference_KING/blob/main/output/viewAncestry_3.png" width="854" height="480">
+<img src="https://github.com/chenlab-uva/AncestryInference_KING/blob/main/output/viewAncestry1.png" width="854" height="480">
+<img src="https://github.com/chenlab-uva/AncestryInference_KING/blob/main/output/viewAncestry2.png" width="854" height="480">
 
 
 ## Reference
