@@ -88,8 +88,6 @@ server <- function(input, output, session) {
     subdf <- subset.df()
     range.PC1 <- max(subdf$PC1) - min(subdf$PC1)
     range.PC2 <- max(subdf$PC2) - min(subdf$PC2)
-    #cat(paste0("PC1 = ", round(input$plot_click$x, 4), "; PC2 = ", round(input$plot_click$y, 4)))
-    #cat("\n")
     sample.click <- subdf[which.min((subdf$PC1 - input$plot_click$x)^2 + (subdf$PC2 - input$plot_click$y)^2), ]
     
     
@@ -109,7 +107,7 @@ server <- function(input, output, session) {
     select.df <- data()
     select.df <- select.df[select.df$FID == input$FID, ]
     validate(
-      need(nrow(select.df) > 0, "Please choose a valid Family ID")
+      need(nrow(select.df) > 0, paste("Family ID",input$FID, "doesn't exist. Please type a valid Family ID"))
     )
     select.df
   })
