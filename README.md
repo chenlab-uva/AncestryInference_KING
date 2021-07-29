@@ -99,10 +99,16 @@ Please upload a text file with ancestry information. Three columns are required.
 library(shiny)
 runGitHub("AncestryInference_KING", "chenlab-uva", ref = "main", subdir = "Rshiny")
 ```
-
+We will see study samples' PC1 and PC2 information after we upload the *InferredAncestry txt file.
 <img src="https://github.com/chenlab-uva/AncestryInference_KING/blob/main/output/viewAncestry_1.png" width="854" height="480">
+
+The second plot (interactive plot) only show samples from the choosen ancestry group.
 <img src="https://github.com/chenlab-uva/AncestryInference_KING/blob/main/output/viewAncestry_2.png" width="854" height="480">
+
+Detailed information will be listed if we are clicking the dots from the interactive plot.
 <img src="https://github.com/chenlab-uva/AncestryInference_KING/blob/main/output/viewAncestry_3.png" width="854" height="480">
+
+Also, we can type a family ID that we are interested in and see samples' detailed information.
 <img src="https://github.com/chenlab-uva/AncestryInference_KING/blob/main/output/viewAncestry_4.png" width="854" height="480">
 
 
