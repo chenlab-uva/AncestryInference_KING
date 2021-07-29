@@ -2,10 +2,9 @@ ui <- fluidPage(
   titlePanel(("Interface for Interactive Plot of Ancestry")),
   sidebarLayout(position = "left", 
                 sidebarPanel( 
-                  fileInput("file1", "Step1: Please choose a *.txt file with ancestry information",accept = "text"),
-                  selectInput("Ancestry", label = "Step 2: Choose the ancestry group", choices = c(Choose=''), selected = NULL),
-                  textInput(inputId = "FID", label = "Or Step 2b: Please type a family ID", value = " "),
-                  actionButton(inputId = "EnterFID", label = "Submit Family ID"),
+                  fileInput("file1", "Step1: Please choose a *InferredAncestry.txt file with ancestry information",accept = "text"),
+                  selectInput("Ancestry", label = "Step 2: Choose an ancestry group", choices = c(Choose=''), selected = NULL),
+                  textInput(inputId = "FID", label = "Or Step 2b: Please type a family ID", value = NULL),
                   width = 2
                 ),
                 mainPanel(

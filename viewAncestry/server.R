@@ -25,6 +25,9 @@ server <- function(input, output, session) {
     return(sub_ex_df)
   })
   
+  
+  
+  
   output$plot1 <- renderPlot({
     req(data())
     ex_df <- data()
@@ -49,7 +52,7 @@ server <- function(input, output, session) {
     }
     ggplot(ex_df, aes(PC1, PC2, color = Ancestry)) + geom_point(aes(colour = factor(Ancestry, levels = legend.group))) + 
       scale_colour_manual(values = cols) + 
-      ggtitle(paste0("PC Coordinates and Inferred Ancestry for Samples in ", studyname," (N=", sample.size, ")")) + 
+      ggtitle(paste0("PC Coordinates and Inferred Ancestry in ", studyname," (N=", sample.size, ")")) + 
       theme(text=element_text(size=12))
   })
   
@@ -101,13 +104,12 @@ server <- function(input, output, session) {
   })
   
   output$table2 <- renderDataTable({
-    req(input$EnterFID)
     req(input$FID)
     req(data())
     select.df <- data()
     select.df <- select.df[select.df$FID == input$FID, ]
     validate(
-      need(nrow(select.df) > 0, paste("Family ID",input$FID, "doesn't exist. Please type a valid Family ID"))
+      need(nrow(select.df) > 0, paste("Family ID", input$FID, "doesn't exist. Please type a valid family ID"))
     )
     select.df
   })
