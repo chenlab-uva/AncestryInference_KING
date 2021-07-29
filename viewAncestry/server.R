@@ -6,7 +6,7 @@ server <- function(input, output, session) {
     ex_df <- read.table(file = file1$datapath, header = TRUE, stringsAsFactors = FALSE)
     ex_df$Ancestry[is.na(ex_df$Ancestry)] <- "Missing"
     ex_df$Ancestry[grep(";", ex_df$Ancestry)] <- "Missing"
-    updateSelectInput(session, "Ancestry", label = "Step 2: Choose the ancestry group", choices = c(Choose='', unique(ex_df$Ancestry)), selected = NULL)
+    updateSelectInput(session, "Ancestry", label = "Step 2: Choose an ancestry group", choices = c(Choose='', unique(ex_df$Ancestry)), selected = NULL)
     return(ex_df)
   })
   
